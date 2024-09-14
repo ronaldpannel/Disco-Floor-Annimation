@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disco Floor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas class="canvas1" id="canvas1"> </canvas>
+
+    <label for="insertSlider" class="insertLabel" id="insertLabel"
+      >Inset Value</label
+    >
+    <input
+      type="range"
+      id="insertSlider"
+      class="insertSlider"
+      min="0.01"
+      max="0.99"
+      value="0.9"
+      step="0.1"
+    />
+
+    <label for="sidesSlider" class="sidesLabel" id="sidesLabel"
+      >Inset Value</label
+    >
+    <input
+      type="range"
+      id="sidesSlider"
+      class="sidesSlider"
+      min="1"
+      max="20"
+      value="9"
+      step="1"
+    />
+
+    <script src="polygon.js"></script>
+    <script src="utilities.js"></script>
+    <script src="vector.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
