@@ -20,24 +20,36 @@ body {
 .insertSlider {
   width: 150px;
   position: absolute;
-  bottom: 5px;
-  left: 60%;
+  top: 10px;
+  left: 85px;
 }
 .insertLabel {
   color: aliceblue;
   position: absolute;
-  bottom: 5px;
-  left: 48%;
+  top: 10px;
+  left: 10px;
+}
+.insertValue {
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 250px;
 }
 .sidesSlider {
   width: 150px;
   position: absolute;
-  bottom: 5px;
-  left: 20%;
+  top: 50px;
+  left: 105px;
 }
 .sidesLabel {
   color: aliceblue;
   position: absolute;
-  bottom: 5px;
-  left: 8%;
+  top: 50px;
+  left: 10px;
+}
+.sidesValue {
+  color: white;
+  position: absolute;
+  top: 50px;
+  left: 270px;
 }

@@ -4,6 +4,8 @@ const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
 const insetSlider = document.getElementById("insertSlider");
 const sidesSlider = document.getElementById("sidesSlider");
+const sidesValue = document.getElementById("sidesValue");
+const insertValue = document.getElementById("insertValue");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -19,33 +21,37 @@ const radius = cellSize / 2;
 let insert = insetSlider.value;
 let n = sidesSlider.value;
 
+function grid() {
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      ctx.strokeStyle = "white";
+      ctx.rect(
+        x * cellSize + (canvas.width % cols),
+        y * cellSize + (canvas.height % rows),
+        cellSize,
+        cellSize
+      );
+      ctx.stroke();
 
-  function grid() {
-    for (let y = 0; y < rows; y++) {
-      for (let x = 0; x < cols; x++) {
-        ctx.strokeStyle = "white";
-        ctx.rect(
-          x * cellSize + (canvas.width % cols),
-          y * cellSize + (canvas.height % rows),
-          cellSize,
-          cellSize
-        );
-        ctx.stroke();
-
-        polyArray.push(
-          new Polygon(
-            x * cellSize + cellSize / 2 + (canvas.width % cols),
-            y * cellSize + cellSize / 2 + (canvas.height % rows),
-            radius,
-            insert,
-            n
-          )
-        );
-      }
+      polyArray.push(
+        new Polygon(
+          x * cellSize + cellSize / 2 + (canvas.width % cols),
+          y * cellSize + cellSize / 2 + (canvas.height % rows),
+          radius,
+          insert,
+          n
+        )
+      );
     }
   }
+}
+function updateValues() {
+  insertValue.innerHTML = insetSlider.value;
+  sidesValue.innerHTML = sidesSlider.value;
+}
+updateValues();
 
-grid()
+grid();
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   polyArray.forEach((poly) => {
@@ -56,19 +62,19 @@ function animate() {
 }
 animate();
 
-
-
 insetSlider.addEventListener("change", () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  polyArray = [];
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
   insert = insetSlider.value;
-   grid()
-
+  updateValues();
+  grid();
 });
 sidesSlider.addEventListener("change", () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  polyArray = [];
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
   n = sidesSlider.value;
-   grid()
-
+  updateValues();
+  grid();
 });
 
 // window.addEventListener("resize", (e) => {
